@@ -1,0 +1,30 @@
+{
+    "name": "swag/all-entities",
+    "description": "Plugin to expose all shopware entities via API",
+    "minimum-stability": "stable",
+    "license": "ISC",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "ScottAnderson",
+            "email": "tri.s.anderson@shopware.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Swag\\AllEntities\\SwagAllEntities",
+        "label": {
+            "en-GB": "Plugin to expose all shopware entities via API",
+            "ja-JP": "APIを介してすべてのショップウェアエンティティを公開するプラグイン,",
+            "lv_LV": "'plugins' kurš piedava visus lietas mājaslapā"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Swag\\AllEntities\\": "src/"
+        }
+    }
+}
