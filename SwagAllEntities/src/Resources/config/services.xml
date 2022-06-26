@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Shopware AllEntities module
+ *
+ * @category  API
+ * @author    Scott Anderson <tri.s.anderson@shopware.com>
+ * @copyright 2022 ForBetterFuture
+ */
+ -->
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Swag\AllEntities\Storefront\Controller\EntitiesController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>
