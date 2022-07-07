@@ -16,6 +16,18 @@
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+        <service id="Swag\AllEntities\Util\RequestLoggerFactory">
+            <argument type="service" id="kernel"/>
+        </service>
+        <!--    This listener will listen to the API hit event and record information about each hit to a custom log file    -->
+        <service id="Swag\AllEntities\Listener\ApiHitListener">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="swag-allentities-logger"/>
+        </service>
+        <service id="swag-allentities-logger" class="Monolog\Logger">
+            <factory service="Swag\AllEntities\Util\RequestLoggerFactory" method="create"/>
         </service>
     </services>
 </container>
