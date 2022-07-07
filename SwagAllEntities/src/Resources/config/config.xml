@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+        <input-field type="">
+            <name>email</name>
+            <copyable>true</copyable>
+            <label>eMail address</label>
+            <label lang="en-GB">E-Mail Address</label>
+            <placeholder>s.anderson@shopware.com</placeholder>
+            <placeholder lang="de-DE">s.anderson@shopware.com</placeholder>
+            <helpText>Please fill in your personal eMail address</helpText>
+            <helpText lang="de-DE">Bitte trage deine persönliche E-Mail Adresse ein</helpText>
+        </input-field>
+    </card>
+</config>
