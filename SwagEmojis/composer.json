@@ -1,0 +1,24 @@
+{
+  "name": "swag/emojis",
+  "description": "Emoji support for Shopware",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "version": "1.0.0",
+  "authors": [
+    {
+        "name": "ScottAnderson",
+        "email": "tri.s.anderson@shopware.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Swag\\Emojis\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Swag\\Emojis\\SwagEmojis",
+    "label": {
+      "en-GB": "Emoji Support"
+    }
+  }
+}
