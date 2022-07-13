@@ -20,5 +20,8 @@
     "label": {
       "en-GB": "Emoji Support"
     }
+  },
+  "require": {
+    "fabpot/goutte": "^4.0"
   }
 }
