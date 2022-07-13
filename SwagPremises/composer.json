@@ -1,0 +1,25 @@
+{
+    "name": "swag/premises",
+    "description": "Introduces entity modelling system and relevant management/UI for physical premises belonging to the businessß",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "ScottAnderson",
+            "email": "s.anderson@shopware.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Swag\\Premises\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "SwagPremises\\SwagPremises",
+        "label": {
+          "de-DE": "Skeleton plugin",
+          "en-GB": "Skeleton plugin"
+        }
+    }
+}
