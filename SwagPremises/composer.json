@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "authors": [
         {
-            "name": "ScottAnderson",
+            "name": "Scott Anderson",
             "email": "s.anderson@shopware.com"
         }
     ],
@@ -16,7 +16,7 @@
         }
     },
     "extra": {
-        "shopware-plugin-class": "SwagPremises\\SwagPremises",
+        "shopware-plugin-class": "Swag\\Premises\\SwagPremises",
         "label": {
           "de-DE": "Skeleton plugin",
           "en-GB": "Skeleton plugin"
