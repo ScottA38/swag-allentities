@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/**
+ * Swag Premises module
+ *
+ * @category  Business Assets
+ * @author    Scott Anderson <s.anderson@shopware.com>
+ * @copyright 2022 shopware AG
+ * @license   https://opensource.org/licenses/MIT MIT license
+ */
+ -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="../../../vendor/shopware/platform/src/Core/TestBootstrap.php"
+         cacheResult="false">
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <server name="KERNEL_CLASS" value="Shopware\Development\Kernel"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_SECRET" value="8583a6ff63c5894a3195331701749943"/>
+        <env name="SHELL_VERBOSITY" value="-1"/>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+    </php>
+
+    <groups>
+        <exclude>
+            <group>ignore</group>
+        </exclude>
+    </groups>
+
+    <testsuites>
+        <testsuite name="Example Testsuite">
+            <directory>src/Test</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">./</directory>
+        </include>
+        <report>
+            <html outputDirectory="coverage" lowUpperBound="50" highLowerBound="90"/>
+        </report>
+    </coverage>
+</phpunit>
