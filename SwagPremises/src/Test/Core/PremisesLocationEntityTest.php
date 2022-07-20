@@ -7,16 +7,18 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
-use Swag\Premises\Core\PremisesLocationDefinition;
-use Swag\Premises\Core\PremisesLocationEntity;
+use Shopware\Core\Framework\Test\TestCaseBase\KernelTestBehaviour;
+use Swag\Premises\Core\Premises\PremisesLocationDefinition;
+use Swag\Premises\Core\Premises\PremisesLocationEntity;
 
 /**
  * Class PremisesLocationEntityTest
  */
 class PremisesLocationEntityTest extends TestCase
 {
+    use KernelTestBehaviour;
+
     public function testLocationEntityHoldsAddressInformation()
     {
         $location = new PremisesLocationEntity();

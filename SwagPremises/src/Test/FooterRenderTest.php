@@ -13,11 +13,11 @@ use Shopware\Storefront\Pagelet\Footer\FooterPageletLoadedEvent;
 use Shopware\Storefront\Pagelet\Footer\FooterPageletLoader;
 use Shopware\Storefront\Pagelet\Footer\FooterPageletLoaderInterface;
 use Shopware\Storefront\Test\Page\StorefrontPageTestBehaviour;
+use Swag\Premises\Core\Premises\PremisesDefinition;
+use Swag\Premises\Core\Premises\PremisesLocationDefinition;
 use Swag\Premises\Listener\AttachShopDataListener;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Shopware\Core\Framework\Uuid\Uuid;
-use Swag\Premises\Core\PremisesEntity;
-use Swag\Premises\Core\PremisesLocationEntity;
 use Shopware\Core\Framework\Event\GenericEvent;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,13 +79,13 @@ class FooterRenderTest extends TestCase
         ];
 
         foreach ($locationData as $locationDatum) {
-            $connection->insert(PremisesEntity::ENTITY_NAME, $locationDatum);
+            $connection->insert(PremisesDefinition::ENTITY_NAME, $locationDatum);
         }
 
         $i = 0;
         foreach ($shopData as $shopDatum) {
             $shopDatum['location'] = $locationData[$i]['id'];
-            $connection->insert(PremisesLocationEntity::ENTITY_NAME, $shopDatum);
+            $connection->insert(PremisesLocationDefinition::ENTITY_NAME, $shopDatum);
             $i++;
         }
     }

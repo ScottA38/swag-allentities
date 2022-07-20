@@ -11,11 +11,10 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\Test\TestCaseBase\KernelTestBehaviour;
 use Shopware\Core\Framework\Uuid\Uuid;
-use Swag\Premises\Core\PremisesCollection;
-use Swag\Premises\Core\PremisesDefinition;
-use Swag\Premises\Core\PremisesEntity;
-use Swag\Premises\Core\PremisesLocationDefinition;
-use Swag\Premises\Core\PremisesLocationEntity;
+use Swag\Premises\Core\Premises\PremisesCollection;
+use Swag\Premises\Core\Premises\PremisesDefinition;
+use Swag\Premises\Core\Premises\PremisesEntity;
+use Swag\Premises\Core\Premises\PremisesLocationEntity;
 
 /**
  * Class PremisesTest
@@ -105,7 +104,7 @@ class PremisesTest extends TestCase
 
         $id = $fields->get('id');
         $name = $fields->get('name');
-        $location = $fields->get('location_id');
+        $location = $fields->get('location');
 
         $this->assertInstanceOf(IdField::class, $id);
         $this->assertInstanceOf(StringField::class, $name);

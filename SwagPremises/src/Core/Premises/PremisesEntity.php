@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Swag\Premises\Core;
+namespace Swag\Premises\Core\Premises;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;

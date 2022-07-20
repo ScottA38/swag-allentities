@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Swag\Premises\Core;
+namespace Swag\Premises\Core\Premises;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 
@@ -34,11 +34,6 @@ class PremisesLocationEntity extends Entity
      * @var string
      */
     protected string $countyOrProvince;
-
-    /**
-     * @var string
-     */
-    protected string $country;
 
     /**
      * @var string
@@ -107,22 +102,6 @@ class PremisesLocationEntity extends Entity
     public function setCountyOrProvince(string $countyOrProvince): void
     {
         $this->countyOrProvince = $countyOrProvince;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param string $country
-     */
-    public function setCountry(string $country): void
-    {
-        $this->country = $country;
     }
 
     /**

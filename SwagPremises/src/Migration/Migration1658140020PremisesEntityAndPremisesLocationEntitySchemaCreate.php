@@ -19,14 +19,6 @@ class Migration1658140020PremisesEntityAndPremisesLocationEntitySchemaCreate ext
     public function update(Connection $connection): void
     {
         $sql = <<<EOF
-    CREATE TABLE IF NOT EXISTS `swag_premises` (
-        `id` BINARY(16) NOT NULL,
-        `name` VARCHAR(255) NOT NULL,
-        `created_at` DATETIME(3) NOT NULL,
-        `updated_at` DATETIME(3) NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
     CREATE TABLE IF NOT EXISTS `swag_premises_location` (
         `id` BINARY(16) NOT NULL,
         `number` VARCHAR(255) NOT NULL,
@@ -39,6 +31,16 @@ class Migration1658140020PremisesEntityAndPremisesLocationEntitySchemaCreate ext
         `created_at` DATETIME(3) NOT NULL,
         `updated_at` DATETIME(3) NULL,
         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+    CREATE TABLE IF NOT EXISTS `swag_premises` (
+        `id` BINARY(16) NOT NULL,
+        `name` VARCHAR(255) NOT NULL,
+        `location_id` BINARY(16) NOT NULL,
+        `created_at` DATETIME(3) NOT NULL,
+        `updated_at` DATETIME(3) NULL,
+        PRIMARY KEY (`id`),
+        FOREIGN KEY (location_id) REFERENCES swag_premises_location(id) ON DELETE NO ACTION
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 EOF;
 
@@ -51,17 +53,8 @@ EOF;
     public function updateDestructive(Connection $connection): void
     {
         $sql = <<<EOF
-    DROP TABLE IF EXISTS `swag_premises`;
-    CREATE TABLE IF NOT EXISTS `swag_premises` (
-        `id` BINARY(16) NOT NULL,
-        `name` VARCHAR(255) NOT NULL,
-        `created_at` DATETIME(3) NOT NULL,
-        `updated_at` DATETIME(3) NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
     DROP TABLE IF EXISTS `swag_premises_location`;
-    CREATE TABLE IF NOT EXISTS `swag_premises_location` (
+    CREATE TABLE `swag_premises_location` (
         `id` BINARY(16) NOT NULL,
         `number` VARCHAR(255) NOT NULL,
         `line_one` VARCHAR(255) NOT NULL,
@@ -73,6 +66,17 @@ EOF;
         `created_at` DATETIME(3) NOT NULL,
         `updated_at` DATETIME(3) NULL,
         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+    DROP TABLE IF EXISTS `swag_premises`;
+    CREATE TABLE IF NOT EXISTS `swag_premises` (
+        `id` BINARY(16) NOT NULL,
+        `name` VARCHAR(255) NOT NULL,
+        `location_id` BINARY(16) NOT NULL,
+        `created_at` DATETIME(3) NOT NULL,
+        `updated_at` DATETIME(3) NULL,
+        PRIMARY KEY (`id`),
+        FOREIGN KEY (location_id) REFERENCES swag_premises_location(id) ON DELETE NO ACTION
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 EOF;
 

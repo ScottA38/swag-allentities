@@ -13,10 +13,19 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="Swag\Premises\Core\PremisesDefinition">
+        <service id="Swag\Premises\Core\Premises\SalesChannel\PremisesApiRoute" public="true">
+            <argument type="service" id="Shopware\Core\Framework\Demodata\DemodataService"/>
+            <argument type="service" id="swag_premises.repository"/>
+        </service>
+        <service id="Swag\Premises\Core\Premises\Generator\PremisesGenerator" public="true">
+            <tag name="shopware.demodata_generator"/>
+            <argument type="service" id="swag_premises.repository"/>
+            <argument type="service" id="swag_premises_location.repository"/>
+        </service>
+        <service id="Swag\Premises\Core\Premises\PremisesDefinition">
             <tag name="shopware.entity.definition" entity="swag_premises"/>
         </service>
-        <service id="Swag\Premises\Core\PremisesLocationDefinition">
+        <service id="Swag\Premises\Core\Premises\PremisesLocationDefinition">
             <tag name="shopware.entity.definition" entity="swag_premises_location"/>
         </service>
     </services>
