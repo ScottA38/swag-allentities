@@ -44,9 +44,7 @@ class PremisesDefinition extends EntityDefinition
         return (new FieldCollection([
                 (new Field\IdField('id', 'id'))->addFlags(new Flag\PrimaryKey(), new Flag\Required()),
                 (new Field\StringField('name', 'name'))->addFlags(new Flag\Required(), new Flag\ApiAware()),
-                (new Field\FkField('location_id', 'locationEntity', PremisesLocationDefinition::class))->addFlags(new Flag\Required()),
-
-                (new Field\OneToOneAssociationField('locationEntity', 'location_id', 'id', PremisesLocationDefinition::class, false))->addFlags(new Flag\ApiAware())
+                (new Field\StringField('address', 'address'))->addFlags(new Flag\Required(), new Flag\ApiAware())
             ])
         );
     }

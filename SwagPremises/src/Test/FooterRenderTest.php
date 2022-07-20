@@ -14,8 +14,6 @@ use Shopware\Storefront\Pagelet\Footer\FooterPageletLoader;
 use Shopware\Storefront\Pagelet\Footer\FooterPageletLoaderInterface;
 use Shopware\Storefront\Test\Page\StorefrontPageTestBehaviour;
 use Swag\Premises\Core\Premises\PremisesDefinition;
-use Swag\Premises\Core\Premises\PremisesLocationDefinition;
-use Swag\Premises\Listener\AttachShopDataListener;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\Framework\Event\GenericEvent;

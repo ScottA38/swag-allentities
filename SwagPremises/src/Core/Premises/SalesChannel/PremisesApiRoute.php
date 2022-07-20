@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Swag\Premises\Core\Premises\SalesChannel;
 
 use OpenApi\Annotations as OA;
-use Shopware\Core\Checkout\Promotion\PromotionDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
@@ -141,9 +140,6 @@ class PremisesApiRoute extends AbstractPremisesRoute
      */
     public function getAll(Request $request, SalesChannelContext $context, Criteria $criteria): PremisesRouteResponse
     {
-        $criteria->addFilter(new EqualsFilter('order.salesChannelId', $context->getSalesChannel()->getId()));
-        $criteria->addAssociation('location');
-
         $premisesEntities = $this->premisesRepository->search($criteria, $context->getContext());
 
         return new PremisesRouteResponse($premisesEntities->getEntities());

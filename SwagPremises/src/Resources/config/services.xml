@@ -20,13 +20,9 @@
         <service id="Swag\Premises\Core\Premises\Generator\PremisesGenerator" public="true">
             <tag name="shopware.demodata_generator"/>
             <argument type="service" id="swag_premises.repository"/>
-            <argument type="service" id="swag_premises_location.repository"/>
         </service>
         <service id="Swag\Premises\Core\Premises\PremisesDefinition">
             <tag name="shopware.entity.definition" entity="swag_premises"/>
-        </service>
-        <service id="Swag\Premises\Core\Premises\PremisesLocationDefinition">
-            <tag name="shopware.entity.definition" entity="swag_premises_location"/>
         </service>
     </services>
 </container>

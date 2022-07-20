@@ -19,9 +19,9 @@ class PremisesEntity extends Entity
     protected string $name;
 
     /**
-     * @var PremisesLocationEntity
+     * @var string
      */
-    protected PremisesLocationEntity $locationEntity;
+    protected string $address;
 
     /**
      * @return string
@@ -40,19 +40,19 @@ class PremisesEntity extends Entity
     }
 
     /**
-     * @return PremisesLocationEntity
+     * @return string
      */
-    public function getLocationEntity(): PremisesLocationEntity
+    public function getAddress(): string
     {
-        return $this->locationEntity;
+        return $this->address;
     }
 
     /**
-     * @param PremisesLocationEntity $locationEntity
+     * @param string $address
      */
-    public function setLocationEntity(PremisesLocationEntity $locationEntity): void
+    public function setAddress(string $address): void
     {
-        $this->locationEntity = $locationEntity;
+        $this->address = $address;
     }
 
 

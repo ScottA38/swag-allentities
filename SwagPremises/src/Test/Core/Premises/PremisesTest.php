@@ -1,20 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Swag\Premises\Test\Core;
+namespace Swag\Premises\Test\Core\Premises;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\Test\TestCaseBase\KernelTestBehaviour;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Swag\Premises\Core\Premises\PremisesCollection;
 use Swag\Premises\Core\Premises\PremisesDefinition;
 use Swag\Premises\Core\Premises\PremisesEntity;
-use Swag\Premises\Core\Premises\PremisesLocationEntity;
 
 /**
  * Class PremisesTest
@@ -31,14 +29,12 @@ class PremisesTest extends TestCase
             [
                 'id' => Uuid::randomHex(),
                 'name' => 'Filson Supply Ltd.',
-                'size' => 100,
-                'location' => Uuid::randomHex()
+                'address' => '101 Some Street, Some Town, 80085'
             ],
             [
                 'id' => Uuid::randomHex(),
                 'name' => 'Canned Heat Plc.',
-                'size' => 500,
-                'location' => Uuid::randomHex()
+                'address' => '005 Bar Street, BazzTown, 101'
             ]
         ];
     }
@@ -50,14 +46,13 @@ class PremisesTest extends TestCase
         $this->assertInstanceOf(PremisesEntity::class, $premises);
     }
 
-    public function testShopCanHoldLocationInformation()
+    public function testShopCanHoldAddressInformation()
     {
         $premises = new PremisesEntity();
-        $location = new PremisesLocationEntity();
 
-        $premises->setLocationEntity($location);
+        $premises->setAddress($this->shopData[0]['address']);
 
-        $this->assertInstanceOf(PremisesLocationEntity::class, $premises->getLocationEntity());
+        $this->assertIsString($premises->getAddress());
     }
 
     public function testPremisesDefinitionExposesDatabaseName()
@@ -76,11 +71,11 @@ class PremisesTest extends TestCase
     {
         $premises = new PremisesEntity();
 
-        $premises->setName('Filson Supply Ltd.');
-        $premises->setLocationEntity((new PremisesLocationEntity()));
+        $premises->setName($this->shopData[1]['name']);
+        $premises->setAddress($this->shopData[1]['address']);
 
-        $this->assertEquals('Filson Supply Ltd.', $premises->getName());
-        $this->assertInstanceOf(PremisesLocationEntity::class, $premises->getLocationEntity());
+        $this->assertEquals('Canned Heat Plc.', $premises->getName());
+        $this->assertEquals('005 Bar Street, BazzTown, 101', $premises->getAddress());
     }
 
     public function testGetPremisesDefinitionEntityName()
@@ -104,10 +99,10 @@ class PremisesTest extends TestCase
 
         $id = $fields->get('id');
         $name = $fields->get('name');
-        $location = $fields->get('location');
+        $address = $fields->get('address');
 
         $this->assertInstanceOf(IdField::class, $id);
         $this->assertInstanceOf(StringField::class, $name);
-        $this->assertInstanceOf(OneToOneAssociationField::class, $location);
+        $this->assertInstanceOf(StringField::class, $address);
     }
 }
