@@ -21,6 +21,10 @@
             <tag name="shopware.demodata_generator"/>
             <argument type="service" id="swag_premises.repository"/>
         </service>
+        <service id="Swag\Premises\Listener\PageletLoadListener">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="swag_premises.repository"/>
+        </service>
         <service id="Swag\Premises\Core\Premises\PremisesDefinition">
             <tag name="shopware.entity.definition" entity="swag_premises"/>
         </service>
