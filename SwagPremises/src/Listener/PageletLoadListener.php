@@ -39,9 +39,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
          $pagelet = $pageletLoadedEvent->getPagelet();
          $criteria = new Criteria();
          $criteria->setIncludes(['address']);
-         $allResults = $this->premisesRepository->search($criteria, $pageletLoadedEvent->getContext())->getElements();
-         $premisesExtension = new ArrayStruct($allResults);
+         $allResults = $this->premisesRepository->search($criteria, $pageletLoadedEvent->getContext());
 
-         $pagelet->addExtensions([ 'premises' => $premisesExtension ]);
+         $pagelet->addExtensions([ 'premises' => $allResults ]);
      }
  }

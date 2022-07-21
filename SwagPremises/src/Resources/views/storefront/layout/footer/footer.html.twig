@@ -1,0 +1,36 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_navigation %}
+    <div id="footerColumns"
+         class="row footer-columns"
+         data-collapse-footer="true"
+         role="list">
+        {% block layout_footer_navigation_hotline %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block layout_footer_navigation_columns %}
+            {{ parent() }}
+        {% endblock %}
+        {% if page.footer.extensions.premises.elements %}
+            <div class="col-md-4 footer-column premises js-footer-column">
+                <div class="premises-heading footer-column-headline footer-headline">Find our Stores:</div>
+                    <div class="footer-column-content collapse js-footer-column-content footer-contact"
+                         aria-labelledby="collapseFooterPremisesTitle">
+                        <ul class="premises-list">
+                            {%  for premises in page.footer.extensions.premises.elements %}
+                                <li class="premises-list-item">
+                                    <b>
+                                        <p class="premises-name">{{ premises.getName() }}</p>
+                                    </b>
+                                    <p class="premises-address">{{ premises.getAddress() }}</p>
+                                </li>
+                                <hr>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
